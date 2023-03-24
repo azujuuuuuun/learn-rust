@@ -1,4 +1,4 @@
-use axum::{http::StatusCode, Json};
+use axum::{extract::Path, http::StatusCode, Json};
 use serde::Deserialize;
 
 use crate::user::model::User;
@@ -30,4 +30,13 @@ pub async fn create_user(Json(payload): Json<CreateUser>) -> (StatusCode, Json<U
     };
 
     (StatusCode::CREATED, Json(user))
+}
+
+pub async fn show_user(Path(user_id): Path<u64>) -> (StatusCode, Json<User>) {
+    let user = User {
+        id: user_id,
+        username: "user".to_string(),
+    };
+
+    (StatusCode::OK, Json(user))
 }
