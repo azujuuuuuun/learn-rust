@@ -9,7 +9,6 @@ async fn main() {
     tracing_subscriber::fmt::init();
 
     let app = Router::new()
-        .route("/", get(root))
         .route(
             "/users",
             get(user::handler::list_users).post(user::handler::create_user),
@@ -22,8 +21,4 @@ async fn main() {
         .serve(app.into_make_service())
         .await
         .unwrap();
-}
-
-async fn root() -> &'static str {
-    "Hello, world!"
 }
