@@ -12,7 +12,7 @@ async fn main() {
         .route("/", get(root))
         .route(
             "/users",
-            get(user::handler::find_all).post(user::handler::create_user),
+            get(user::handler::list_users).post(user::handler::create_user),
         )
         .route("/users/:user_id", get(user::handler::show_user));
 

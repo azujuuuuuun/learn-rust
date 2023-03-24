@@ -8,7 +8,7 @@ pub struct CreateUser {
     username: String,
 }
 
-pub async fn find_all() -> (StatusCode, Json<Vec<User>>) {
+pub async fn list_users() -> (StatusCode, Json<Vec<User>>) {
     let users = vec![
         User {
             id: 1337,
